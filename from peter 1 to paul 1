@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>От Петра I до Павла I | Династия Романовых</title>
+  <style>
+    /* --- Базовые стили (те же, что и на главной) --- */
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* --- Меню --- */
+        /* --- Адаптивное Меню --- */
+    #menu1 {
+      position: relative;
+      width: 100%;
+      background-color: #fff5ee; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1000; /* Повысил z-index */
+      border-bottom: 2px solid #ffdab9; 
+    }
+
+    /* Контейнер для выравнивания бургера и меню */
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Кнопка Бургер (скрыта на ПК) */
+    .burger-menu {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #900020;
+      padding: 15px;
+      user-select: none;
+    }
+
+    #menu1 ul.main-nav {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    #menu1 ul.main-nav li {
+      position: relative;
+    }
+
+    #menu1 ul.main-nav li a {
+      display: block;
+      padding: 15px 20px; /* Чуть компактнее */
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #900020; 
+      transition: all 0.3s ease;
+    }
+
+    #menu1 ul.main-nav li a:hover {
+      background-color: #ffdab9;
+      color: #333;
+    }
+    
+    /* Выпадающее меню (Десктоп) */
+    #menu1 ul.main-nav li ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      min-width: 250px;
+      background: #ffffff;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      border-radius: 0 0 10px 10px;
+      overflow: hidden;
+      border-top: 2px solid #007bff;
+      z-index: 1001;
+    }
+
+    #menu1 ul.main-nav li:hover ul {
+      display: block;
+    }
+
+    #menu1 ul.main-nav li ul li {
+      width: 100%;
+    }
+
+    #menu1 ul.main-nav li ul li a {
+      color: #333;
+      text-transform: none;
+      padding: 12px 20px;
+      border-bottom: 1px solid #eee;
+      font-weight: normal;
+    }
+
+    #menu1 ul.main-nav li ul li a:hover {
+      background-color: #fff5ee;
+      color: #900020;
+      padding-left: 25px;
+    }
+
+    /* --- МОБИЛЬНАЯ ВЕРСИЯ МЕНЮ --- */
+    @media (max-width: 768px) {
+      .nav-container {
+        justify-content: space-between; /* Бургер слева/справа */
+      }
+
+      .burger-menu {
+        display: block; /* Показываем бургер */
+      }
+
+      /* Скрываем обычное меню по умолчанию на мобильных */
+      #menu1 ul.main-nav {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff5ee;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        border-top: 1px solid #ffdab9;
+      }
+
+      /* Класс для открытия меню через JS */
+      #menu1 ul.main-nav.active {
+        display: flex;
+      }
+
+      #menu1 ul.main-nav li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #ffe4d6;
+      }
+
+      #menu1 ul.main-nav li a {
+        padding: 15px;
+      }
+
+      /* На мобильном выпадающие меню работают по клику или всегда открыты */
+      #menu1 ul.main-nav li ul {
+        position: static; /* Становится частью потока */
+        box-shadow: none;
+        border-top: none;
+        background-color: #fffaf5; /* Чуть темнее фон для подпунктов */
+        display: none; /* Скрыто по умолчанию */
+      }
+      
+      /* Показываем подменю при наведении или фокусе на мобильном */
+      #menu1 ul.main-nav li:hover ul {
+        display: block;
+      }
+    }
+
+    /* --- Хедер страницы категории --- */
+    .category-header {
+      background: linear-gradient(135deg, #fff5ee 0%, #ffe4d6 100%);
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 3px solid #ffdab9;
+    }
+    .category-header h1 {
+      color: #900020;
+      font-size: 2.5em;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    .category-header p {
+      color: #666;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* --- Основной контент статьи --- */
+    main {
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+      min-height: 80vh;
+    }
+
+    .content-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .ruler-section {
+      margin-bottom: 60px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 40px;
+    }
+    .ruler-section:last-child {
+      border-bottom: none;
+    }
+
+    .ruler-title {
+      color: #900020;
+      font-size: 2em;
+      margin-bottom: 10px;
+      border-left: 5px solid #ffdab9;
+      padding-left: 15px;
+    }
+
+    .ruler-years {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .ruler-content {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .ruler-img {
+      flex-shrink: 0;
+      width: 250px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border: 4px solid #fff5ee;
+    }
+
+    .ruler-text {
+      flex-grow: 1;
+      font-size: 1.1em;
+      text-align: justify;
+    }
+
+    .ruler-text p {
+      margin-bottom: 15px;
+    }
+
+    /* Адаптивность для статьи */
+    @media (max-width: 768px) {
+      .ruler-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .ruler-img {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+      }
+      .ruler-title {
+        font-size: 1.6em;
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
+        border-bottom: 2px solid #ffdab9;
+        padding-bottom: 10px;
+      }
+      .content-wrapper {
+        padding: 20px;
+      }
+    }
+
+    /* --- Футер (тот же) --- */
+    footer {
+      background-color: #fff5ee;
+      padding: 40px 20px;
+      border-top: 2px solid #ffdab9;
+    }
+    .footer-menu {
+      max-width: 1200px; margin: 0 auto 40px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-menu-column { flex: 1; min-width: 200px; }
+    .footer-menu-column h4 {
+      color: #900020; border-bottom: 2px solid #ffdab9;
+      padding-bottom: 10px; margin-bottom: 15px;
+    }
+    .footer-menu-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-menu-column ul li { margin-bottom: 8px; }
+    .footer-menu-column ul li a {
+      color: #333; text-decoration: none; transition: color 0.3s;
+    }
+    .footer-menu-column ul li a:hover { color: #007bff; padding-left: 5px; }
+    .copyright {
+      display: block; margin-top: 40px; opacity: 0.7;
+      text-align: center; font-size: 0.9em; color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Навигация -->
+<nav id="menu1">
+  <div class="nav-container">
+    <!-- Кнопка Бургер -->
+    <div class="burger-menu" onclick="toggleMenu()">
+      &#9776; <!-- Символ трех полосок -->
+    </div>
+
+    <!-- Основное меню -->
+    <ul class="main-nav" id="mainNav">
+      <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0bf25-08a4-7fbe-af23-2662b72d2867  ">Главная</a></li>
+      <li><a href="#m2">Категории</a> 
+        <ul>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0bf40-2682-7b2f-b21c-64603f5402f0">Первые Романовы</a></li>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c046-e9ec-7ae8-a321-0d9106260f57">От Петра I до Павла I</a></li>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c066-ec01-717e-91cf-f07c61ef3247">Золотой век и Закат</a></li>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c0a6-591d-782b-afe0-21c5b655ccdd">Николай II и семья</a></li>
+        </ul>
+      </li>
+      <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c030-be98-71e2-9f05-27741d5bc70e">Об авторе</a></li>
+      <li><a href="#m4">Доп. источники</a>
+        <ul>
+          <li><a href="../sources/archives.html">Архивные документы</a></li>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c07f-0801-71e0-8b2d-dda7fd2f7449">Рекомендуемая литература</a></li>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c081-8c10-76a1-be44-09efd60f90bd">Музеи</a></li>
+          <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c085-078d-72c9-9fc8-5a6d12b96c9c">Медиатека</a></li>
+        </ul>
+      </li>
+      <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c072-0b33-7f09-83fb-a8f1abc2f7ae">Интересное</a></li>
+      <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0c02e-41a3-7e4d-897f-0e5c9baf0c09">Контакты</a></li>
+    </ul>
+  </div>
+</nav>
+<header class="category-header">
+  <h1>От Петра I до Павла I</h1>
+  <p>Императорский период XVIII века</p>
+</header>
+
+<main>
+  <div class="content-wrapper">
+    
+    <!-- Пётр I -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Пётр I Великий</h2>
+      <span class="ruler-years">Годы правления: 1682–1725</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=a0a5ccdaf63cfb66ce3c9e918bfc2bb1_l-15415022-images-thumbs&ref=rim&n=13&w=715&h=768" alt="Пётр I" class="ruler-img">
+        <div class="ruler-text">
+          <p>Первый Император Всероссийский. Провел радикальные реформы государственного управления, армии и культуры. Основал Санкт-Петербург и создал регулярный флот.</p>
+          <p>Его деятельность превратила Россию в великую европейскую державу, но потребовала огромного напряжения народных сил. Ввел новый порядок престолонаследия, позволивший монарху самому назначать наследника, что стало причиной будущих смут.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Екатерина I -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Екатерина I</h2>
+      <span class="ruler-years">Годы правления: 1725–1727</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=724fd6628b726b44929608033e425a92_l-9858868-images-thumbs&n=33&w=923&h=1200" alt="Екатерина I" class="ruler-img">
+        <div class="ruler-text">
+          <p>Вторая жена Петра I, возведенная им в сан императрицы. Взошла на престол благодаря поддержке гвардии и князя Меншикова после смерти мужа.</p>
+          <p>Фактически государством управляли ближайшие сподвижники Петра I. При ней был создан Верховный тайный совет — орган, ограничивший самодержавие в пользу аристократии.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Пётр II -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Пётр II</h2>
+      <span class="ruler-years">Годы правления: 1727–1730</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=cda37b874c208126cff93862a636a889_l-5280334-images-thumbs&n=33&w=955&h=1200" alt="Пётр II" class="ruler-img">
+        <div class="ruler-text">
+          <p>Внук Петра I, сын царевича Алексея. Вступил на престол ребенком. Его короткое правление прошло под влиянием сначала Меншикова, а затем семьи Долгоруковых.</p>
+          <p>Двор переехал обратно в Москву. Умер от оспы в 14 лет, не оставив завещания, что пресекло прямую мужскую линию Романовых.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Анна Иоанновна -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Анна Иоанновна</h2>
+      <span class="ruler-years">Годы правления: 1730–1740</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=7e6293e3737762328d3946671e0f9699_l-5232615-images-thumbs&n=13" alt="Анна Иоанновна" class="ruler-img">
+        <div class="ruler-text">
+          <p>Дочь Ивана V, племянница Петра I. Была приглашена на престол Верховным тайным советом на условиях ограничения власти («Кондиции»), которые впоследствии разорвала.</p>
+          <p>Её правление характеризовалось засильем иностранцев во главе с фаворитом Эрнстом Бироном, что вошло в историю как период «бироновщины». Однако при ней были отменены ограничения на срок службы дворян.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Иван VI -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Иван VI Антонович</h2>
+      <span class="ruler-years">Годы правления: 1740–1741</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=d422d7d02143d626284992ee8821e290_l-5343154-images-thumbs&n=13" alt="Иван VI" class="ruler-img">
+        <div class="ruler-text">
+          <p>Праправнук Алексея Михайловича. Вступил на престол младенцем при регентстве матери Анны Леопольдовны и фаворита Миниха.</p>
+          <p>Был свергнут в результате бескровного переворота Елизаветой Петровной. Провел всю жизнь в заключении в разных крепостях и был убит стражей при попытке освобождения в возрасте 23 лет.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Елизавета Петровна -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Елизавета Петровна</h2>
+      <span class="ruler-years">Годы правления: 1741–1762</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=729a680943f03a8f74a2752a74d6c176_l-5235085-images-thumbs&n=13" alt="Елизавета Петровна" class="ruler-img">
+        <div class="ruler-text">
+          <p>Дочь Петра I и Екатерины I. Взошла на престол в результате дворцового переворота, опираясь на гвардейские полки. Провозгласила курс на возвращение к петровским традициям.</p>
+          <p>При ней Россия участвовала в Семилетней войне, был основан Московский университет (1755) и Академия художеств (1757). Эпоха Елизаветы считается временем расцвета русской культуры и барокко.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Пётр III -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Пётр III</h2>
+      <span class="ruler-years">Годы правления: 1762</span>
+      <div class="ruler-content">
+        <img src="https://avatars.mds.yandex.net/i?id=d465a68e3ce3f711dafa23ae266d6ac4_l-5235299-images-thumbs&n=13" alt="Пётр III" class="ruler-img">
+        <div class="ruler-text">
+          <p>Внук Петра I, сын Анны Петровны. Правил всего полгода. Издал Манифест о вольности дворянства, освободивший дворян от обязательной службы.</p>
+          <p>Был непопулярен в гвардии из-за преклонения перед прусским королем Фридрихом II. Свергнут своей женой Екатериной Алексеевной в результате заговора и вскоре убит.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Екатерина II -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Екатерина II Великая</h2>
+      <span class="ruler-years">Годы правления: 1762–1796</span>
+      <div class="ruler-content">
+        <img src="https://storage.yandexcloud.net/roz-wiki/Catherine_II_after_Roslin%2C_Rokotov_%281780s%2C_Kunsthistorisches_Museum%29.jpg" alt="Екатерина II" class="ruler-img">
+        <div class="ruler-text">
+          <p>Жена Петра III. Проводила политику «просвещенного абсолютизма», переписывалась с Вольтером и Дидро.</p>
+          <p>При ней границы империи значительно расширились (присоединение Крыма, разделы Речи Посполитой). Золотой век русского дворянства сопровождался усилением крепостного права и подавлением восстания Пугачева.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Павел I -->
+    <section class="ruler-section">
+      <h2 class="ruler-title">Павел I</h2>
+      <span class="ruler-years">Годы правления: 1796–1801</span>
+      <div class="ruler-content">
+        <img src="https://web.archive.org/web/20220326075602im_/https://upload.wikimedia.org/wikipedia/commons/b/bc/Emperor_Paul_I_of_Russia.png" alt="Павел I" class="ruler-img">
+        <div class="ruler-text">
+          <p>Сын Петра III и Екатерины II. Стремился упорядочить государственную жизнь, издал указ о престолонаследии (только по мужской линии), ограничил привилегии дворянства.</p>
+          <p>Его непоследовательная политика и строгая дисциплина вызвали недовольство элиты. Правление закончилось трагически: Павел I стал единственной жертвой успешного дворцового заговора среди российских монархов, убитым в Михайловском замке.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-menu">
+    <div class="footer-menu-column">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="https://codepen.io/editor/cgbrxpqq-the-decoder/pen/01a0bf25-08a4-7fbe-af23-2662b72d2867">Главная</a></li>
+        <li><a href="../about.html">О проекте</a></li>
+        <li><a href="#">Категории</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-menu-column">
+      <h4>Ресурсы</h4>
+      <ul>
+        <li><a href="../sources/literature.html">Книги</a></li>
+        <li><a href="../sources/archives.html">Архивы</a></li>
+        <li><a href="../sources/museums.html">Музеи</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-menu-column">
+      <h4>Информация</h4>
+      <ul>
+        <li><a href="#">Политика конфиденциальности</a></li>
+        <li><a href="#">Условия использования</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>О нас</h3>
+      <p>Исторический проект, посвященный трехсотлетней истории династии Романовых.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Свяжитесь с нами</h3>
+      <p>
+        Email: <a href="mailto:vladatasha@gmail.com" style="color:#900020">vladatasha@gmail.com</a>
+      </p>
+    </div>
+  </div>
+  
+  <small class="copyright">Copyright &copy; 2026. Все права защищены.</small>
+</footer>
+
+</body>
+  <script>
+  function toggleMenu() {
+    var nav = document.getElementById("mainNav");
+    nav.classList.toggle("active");
+  }
+
+  // Закрывать меню при клике вне его (опционально, для удобства)
+  document.addEventListener('click', function(event) {
+    var nav = document.getElementById("mainNav");
+    var burger = document.querySelector(".burger-menu");
+    
+    if (!nav.contains(event.target) && !burger.contains(event.target)) {
+      nav.classList.remove("active");
+    }
+  });
+</script>
+</html>
